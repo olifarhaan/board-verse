@@ -58,7 +58,7 @@ const MiniMap = forwardRef<
           y: miniY,
           cursor: "grab",
         }}
-        animate={{ x: -x.get() / 10, y: -y.get() / 10 }}
+        animate={{ x: -x.get() / 15, y: -y.get() / 15 }}
         transition={{ duration: 0.1 }}
       ></motion.div>
     </div>

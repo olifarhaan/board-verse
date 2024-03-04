@@ -13,7 +13,6 @@ const NameInput = () => {
     if (!roomId) return;
     socket.emit("check_room", roomId);
     socket.on("room_exists", (exists) => {
-      console.log("room_exists", exists);
       if (!exists) {
         navigate("/");
       }

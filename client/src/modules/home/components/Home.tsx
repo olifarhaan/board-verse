@@ -16,15 +16,11 @@ const Home = () => {
       navigate(`/${roomIdFromServer}`);
     });
     const handleJoinedRoom = (roomIdFromServer: string, failed?: boolean) => {
-      console.log("second");
       if (!failed) {
-        console.log("third");
         setAtomRoomId(roomIdFromServer);
         navigate(`/${roomIdFromServer}`);
       } else {
-        console.log("fourth");
-        console.log("error encountered while joining");
-
+        console.error("error encountered while joining");
         toast.error("Room does not exist");
       }
     };
@@ -44,7 +40,6 @@ const Home = () => {
   const handleJoinRoom = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     socket.emit("join_room", roomId, username);
-    console.log("first");
   };
 
   return (

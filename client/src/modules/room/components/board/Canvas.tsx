@@ -22,11 +22,11 @@ const Canvas = ({ undoRef }: { undoRef: RefObject<HTMLButtonElement> }) => {
   const [, setMovedMinimap] = useState(false);
 
   const { width, height } = useViewportSize();
-  useKeyPressEvent("Control", (e) => {
-    if (e.ctrlKey && !dragging) {
-      setDragging(true);
-    }
-  });
+  // useKeyPressEvent("Control", (e) => {
+  //   if (e.ctrlKey && !dragging && !(e.key!=='z')) {
+  //     setDragging(true);
+  //   }
+  // });
 
   const { x, y } = useBoardPosition();
 
@@ -57,18 +57,18 @@ const Canvas = ({ undoRef }: { undoRef: RefObject<HTMLButtonElement> }) => {
   useEffect(() => {
     const newCtx = canvasRef.current?.getContext("2d");
     if (newCtx) setCtx(newCtx);
-    const handleKeyUp = (e: KeyboardEvent) => {
-      if (!e.ctrlKey && dragging) {
-        setDragging(false);
-      }
-    };
+    // const handleKeyUp = (e: KeyboardEvent) => {
+    //   if (!e.ctrlKey && (dragging || e.type === "click")) {
+    //     setDragging(false);
+    //   }
+    // };
 
-    window.addEventListener("keyup", handleKeyUp);
+    // window.addEventListener("keyup", handleKeyUp);
     const undoBtn = undoRef.current;
     undoBtn?.addEventListener("click", handleUndo);
 
     return () => {
-      window.removeEventListener("keyup", handleKeyUp);
+      // window.removeEventListener("keyup", handleKeyUp);
       undoBtn?.addEventListener("click", handleUndo);
     };
   }, [dragging, handleUndo, undoRef]);
@@ -88,12 +88,8 @@ const Canvas = ({ undoRef }: { undoRef: RefObject<HTMLButtonElement> }) => {
 
   return (
     <div className="h-100 w-100 position-relative">
-      {/* <button
-        className="btn btn-primary position-absolute top-0 overflow-x"
-        onClick={handleUndo}
-      >
-        Undo
-      </button> */}
+      <Background />
+
       <motion.canvas
         ref={canvasRef}
         width={CANVAS_SIZE.width}
@@ -103,7 +99,7 @@ const Canvas = ({ undoRef }: { undoRef: RefObject<HTMLButtonElement> }) => {
           x,
           y,
           zIndex: 10,
-          cursor: dragging ? "move" : "default",
+          // cursor: dragging ? "move" : "default",
         }}
         drag={dragging}
         dragConstraints={{
@@ -128,7 +124,6 @@ const Canvas = ({ undoRef }: { undoRef: RefObject<HTMLButtonElement> }) => {
           handleDraw(e.changedTouches[0].clientX, e.changedTouches[0].clientY)
         }
       />
-      <Background />
       <MiniMap
         ref={smallCanvasRef}
         dragging={dragging}

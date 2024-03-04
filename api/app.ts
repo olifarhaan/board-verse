@@ -11,7 +11,6 @@ const app = express();
 export const server = createServer(app);
 
 const FRONTEND_BASE_URL = process.env.FRONTEND_BASE_URL as string;
-console.log(FRONTEND_BASE_URL, "base");
 
 const corsOptions = {
   origin: FRONTEND_BASE_URL,
@@ -21,7 +20,7 @@ const corsOptions = {
 app.use(express.json({ limit: "50mb" }));
 app.use(cookieParser());
 app.use(cors(corsOptions));
-app.use(verifyToken);
+// app.use(verifyToken);
 
 app.get("/test", (req: Request, res: Response, next: NextFunction) => {
   res.status(200).json({
@@ -59,7 +58,6 @@ const undoMove = (roomId: string, socketId: string) => {
   const room = rooms.get(roomId)!;
   if (room) {
     room.usersMoves.get(socketId)!.pop();
-    console.log("room is there");
   }
 };
 
@@ -69,13 +67,10 @@ const leaveRoom = (roomId: string, socketId: string) => {
     const userMoves = room.usersMoves.get(socketId);
     room.drawed.push(...userMoves!);
     room.users.delete(socketId);
-    console.log(room);
   }
 };
 
 io.on("connection", (socket) => {
-  console.log("connection");
-
   const getRoomId = () => {
     const joinedRoom = [...socket.rooms].find((room) => room !== socket.id);
     if (!joinedRoom) return socket.id;
@@ -106,7 +101,6 @@ io.on("connection", (socket) => {
     const room = rooms.get(roomId);
     if (room) {
       socket.join(roomId);
-      console.log("I'm joined");
 
       room.users.set(socket.id, username);
       room.usersMoves.set(socket.id, []);
@@ -118,8 +112,6 @@ io.on("connection", (socket) => {
   });
 
   socket.on("joined_room", () => {
-    console.log("joined room");
-
     const roomId = getRoomId();
     const room = rooms.get(roomId);
     if (room) {
@@ -162,7 +154,6 @@ io.on("connection", (socket) => {
 
   socket.on("undo", () => {
     const roomId = getRoomId();
-    console.log("undoo");
     undoMove("global", socket.id);
     socket.broadcast.to(roomId).emit("user_undo", socket.id);
   });
@@ -171,6 +162,5 @@ io.on("connection", (socket) => {
     const roomId = getRoomId();
     leaveRoom(roomId, socket.id);
     io.to(roomId).emit("user_disconnected", socket.id);
-    console.log("client disconnected");
   });
 });
