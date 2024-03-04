@@ -35,3 +35,9 @@
   position: relative;
   z-index: 1;
 }
+
+.home-heading {
+  background: linear-gradient(to bottom, transparent 50%, #fee5e4 50%);
+
+  text-align: center;
+}
