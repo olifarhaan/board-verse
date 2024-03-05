@@ -27,7 +27,7 @@ Responsive design for both desktop and mobile devices.
 
 ## Full Demo
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/iOeDbke1ZrU?si=3b-DzPHoBvddB6Op" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+[![Draw Verse Demo Video](https://imgur.com/a/v5vA07m)](https://youtu.be/iOeDbke1ZrU "Draw Verse Demo Video")
 
 ## Setting up the Project
 
