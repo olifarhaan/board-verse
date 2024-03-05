@@ -27,7 +27,7 @@ Responsive design for both desktop and mobile devices.
 
 ## Full Demo
 
-[![Draw Verse Demo Video](https://imgur.com/a/v5vA07m)](https://youtu.be/iOeDbke1ZrU "Draw Verse Demo Video")
+[![Draw Verse Demo Video](https://i.imgur.com/3dcebSt.png)](https://youtu.be/iOeDbke1ZrU "Draw Verse Demo Video")
 
 ## Setting up the Project
 
