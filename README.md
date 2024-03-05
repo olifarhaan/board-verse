@@ -1,9 +1,9 @@
-
 # Board Verse | A Real Time Collaborative Whiteboard Application
 
 The Whiteboard Application is a collaborative drawing tool that allows users to create and join real-time whiteboard sessions. With a focus on simplicity and user experience, this application enables users to draw using various colors and brush sizes, undo/redo actions, and save the whiteboard content as images or PDFs. The implementation includes secure user authentication using Keycloak, ensuring that only authorized users can access and contribute to whiteboard sessions.
 
 ## Key Features
+
 Create and join whiteboard sessions.
 Drawing functionality with color and brush size options.
 Undo/redo actions for seamless user experience.
@@ -12,6 +12,7 @@ Save whiteboard content as images or PDFs.
 Responsive design for both desktop and mobile devices.
 
 ## Technologies Used
+
 1. React for front-end development.
 
 2. WebSocket, Node Express for back-end development.
@@ -19,21 +20,27 @@ Responsive design for both desktop and mobile devices.
 3. Keycloak for authentication.
 
 4. Native canvas for drawing capabilities.
-Keycloak via Docker for secure user authentication.
+   Keycloak via Docker for secure user authentication.
 
 5. Bootstrap 5.0 for a clean and fluidic layout.
-For detailed setup instructions, feature documentation, and screenshots, please refer to the respective sections below.
+   For detailed setup instructions, feature documentation, and screenshots, please refer to the respective sections below.
 
+## Full Demo
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/iOeDbke1ZrU?si=3b-DzPHoBvddB6Op" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Setting up the Project
 
 ### Keycloak setup
 
 1. Run this Docker commaand to set up Keycloak on your local system
+
 ```
 docker run -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:24.0.0 start-dev
 ```
+
 2. Set up the account with the following configuration
+
 ```
 Keycloak({
   url: "http://localhost:8080",
@@ -49,10 +56,10 @@ Keycloak({
 
 5. Refer to this [Keycloak document](https://www.keycloak.org/getting-started/getting-started-docker) for setup incase of any error.
 
-
 ## Frontend & Backend setup
 
 1. Run this command in your local computer to clone the repo.
+
 ```
 git clone https://github.com/olifarhaan/board-verse.git
 
